@@ -1,12 +1,12 @@
 "use strict";
 
 /* task 1 */
-let gettedNumber = Number(prompt("Enter the integer number", ""));
-if (isNaN(gettedNumber)) {
+let inputValue = Number(prompt("Enter the integer number", ""));
+if (isNaN(inputValue)) {
     console.log("Помилка: введіть число");
 }
-else if (!isNaN(gettedNumber)) {
-    for( let i  = 0; i < gettedNumber; i += 2 ) {
+else {
+    for( let i  = 0; i < inputValue; i += 2 ) {
         console.log(i);
     }
 } //
