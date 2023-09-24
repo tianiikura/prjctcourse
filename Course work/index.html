@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Course work</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.scss">
+        <script src="./script.js"></script>
+        <!--<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">-->    
+    </head>
+    <body>
+        <header>
+
+        </header>
+        <main>
+            <section class="choose-date-period">
+                <form id="chooseDateform">
+                    <div class="choose-dates">
+                        <label for="startDate">Enter start date</label>
+                        <div class="start-date">
+                            <input type="date" id="startDate" name="startDate">
+                        </div>
+                        <label for="endDate">Enter end date</label>
+                        <div class="end-date">
+                            <input type="date" id="endDate" name="endDate">
+                        </div>
+                    </div>
+                    <div class="choose-date-period">
+                        <lable for="datePeriod">Choose date period</lable>
+                        <button type="button">Week</button>
+                        <button type="button">Month</button>
+                    </div>
+                    <div class="choose-days-option">
+                        <lable for="daysOption">Choose days option</lable>
+                        <select name="daysOption" id="daysOption">
+                            <option value="allDays">all days</option>
+                            <option value="workingDays">working days</option>
+                            <option value="weekends">weekends</option>
+                        </select>
+                    </div>
+                    <div class="choose-period-option">
+                        <lable for="periodOption">Choose period option. Calculate the </lable>
+                        <select name="periodOption" id="periodOption">
+                            <option value="days">days number</option>
+                            <option value="hours">hours number</option>
+                            <option value="minutes">minutes number</option>
+                            <option value="seconds">seconds number</option>
+                        </select>                        
+                    </div>
+                    <input type="submit" value="Submit">
+                </form>
+                <div class="date-actual-result">
+                    Result: <span id="actualResult"></span>
+                </div>               
+            </section>
+            <section class="history-data">
+                <table class="history-data__table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Start date</th>
+                            <th>End date</th>
+                            <th>Result</th>
+                        </tr>                        
+                    </thead>
+                    <tbody id="historyTableData"></tbody>
+                </table>
+            </section>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>
