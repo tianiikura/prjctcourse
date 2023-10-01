@@ -7,23 +7,24 @@ function durationBetweenDates (startDate, endDate, dimension) {
     
     switch (dimension) {
     case "days":
-        periodDuration = 24 * 60 * 60 * 1000;
+        periodDuration = 1
         break;
     case "hours":
-        periodDuration = 60 * 60 * 1000;
+        periodDuration = 24;
         break;
     case "minutes":
-        periodDuration = 60 * 1000;
+        periodDuration = 24 * 60;
         break;
     case "seconds":
-        periodDuration = 1000;
+        periodDuration = 24 * 60 * 60;
         break;
     default:
         return "Invalid dimension. Please choose from the list.";
     }
 
-    let datesDifference = Math.abs(endDateTime - startDateTime);
-    let periodAmount = Math.floor(datesDifference / periodDuration);
+    let differenceInDays = Math.floor(Math.abs(endDateTime - startDateTime) / (24 * 60 * 60 * 1000));
+    console.log(differenceInDays)
+    let periodAmount = differenceInDays * periodDuration;
 
     return `${periodAmount} ${dimension}`;
 };
