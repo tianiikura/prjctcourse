@@ -3,16 +3,9 @@
 const userNames = ['Петро', 'Емма', 'Петро', 'Емма', 'Марта', 'Яна', 'Василь', 'Антон', 'Олена', 'Емма'];
 
 function filterUnique(array) {
-    const filteredNamesSet = new Set();
+  const filteredNamesSet = new Set(array);
+  return Array.from(filteredNamesSet);
+}
   
-    array.forEach(name => {
-      filteredNamesSet.add(name);
-    });
+console.log(filterUnique(userNames)); // ['Петро', 'Емма', 'Марта', 'Яна', 'Василь', 'Антон', 'Олена'];
   
-    const filteredNames = Array.from(filteredNamesSet);
-    return filteredNames;
-  }
-  
-  const filteredUserNames = filterUnique(userNames);
-  
-  console.log(filteredUserNames);  // Output: ['Петро', 'John', 'Емма', 'Марта', 'Mike', 'Яна', 'Mary', 'Василь', 'Антон', 'Олена']
