@@ -35,7 +35,6 @@ function detonatorTimer(delay) {
         } 
         else {
             console.log("BOOM!");
-            clearTimeout(intervalId);
         };
     }
     let intervalId = setTimeout(iteration, 1000);   
