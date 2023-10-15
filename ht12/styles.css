@@ -1,0 +1,57 @@
+html, body {
+    height: 100%;
+}
+
+.body_light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.body_dark {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.full-screen-section {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch-button {
+    width: 250px;
+    height: 80px;
+    text-align: center;
+    vertical-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    /*color: #000000;*/
+    background-color: transparent;
+    margin-bottom: 20px;
+}
+.switch-button:hover {
+    cursor: pointer;
+}
+
+.switch-button:active {
+    scale: 95%;
+}
+
+.body_dark .switch-button {
+    color: #ffffff;
+    border: #ffffff 1px solid;
+}
+
+.turn-on-button {
+    /*color: #ffffff;*/
+}
+
+.last-turning-off-message {
+    text-align: center;
+    vertical-align: center;
+    font-size: 24px;
+}
+
