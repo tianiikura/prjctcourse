@@ -22,8 +22,29 @@ function durationBetweenDates (startDate, endDate, dimension, daysOption) {
         return "Invalid dimension. Please choose from the list.";
     }
 
-    let differenceInDays = Math.floor(Math.abs(endDateTime - startDateTime) / (24 * 60 * 60 * 1000));
-    console.log(differenceInDays)
+    let differenceInDays = 0;
+    switch (daysOption) {
+        case "allDays":
+            differenceInDays = Math.floor(Math.abs(endDateTime - startDateTime) / (24 * 60 * 60 * 1000));
+            break;
+        case "workingDays":
+            for (let c = new Date(startDate); c < endDateTime; c.setDate(c.getDate() + 1)) {
+                let isWeekend = c.getDay() === 6 || c.getDay() === 0;
+                if (isWeekend === false) {
+                    differenceInDays++;
+                }
+            };
+            break;
+        case "weekends":
+            for (let c = new Date(startDate); c < endDateTime; c.setDate(c.getDate() + 1)) {
+                let isWeekend = c.getDay() === 6 || c.getDay() === 0;
+                if (isWeekend === true) {
+                    differenceInDays++;
+                }
+            };
+            break;
+    }
+    
     let periodAmount = differenceInDays * periodDuration;
 
     return `${periodAmount} ${dimension}`;
@@ -38,6 +59,8 @@ function runDateCalculting () {
     const actualResultContainer = document.getElementById("actualResult");
     const weekPeriodButton = document.getElementById("weekPeriod");
     const monthPeriodButton = document.getElementById("monthPeriod");
+
+    datesHistory.forEach(addToTable);
 
     //Виставленн дати не раніше початкової і не пізніше кінцевої
     const enableEndDateInput = function () {
@@ -66,8 +89,8 @@ function runDateCalculting () {
 
     const calculateTime = function (event) {
         event.preventDefault();
-        const startDateValue = new Date(startDateInput.value);
-        const endDateValue = new Date(endDateInput.value);
+        const startDateValue = startDateInput.value;
+        const endDateValue = endDateInput.value;
         const periodOptionValue = periodOptionInput.value;
         const daysOptionValue = daysOptionInput.value;
 
@@ -75,11 +98,49 @@ function runDateCalculting () {
         
         actualResultContainer.innerText = result;
 
+        const record = {
+            startDate: startDateValue,
+            endDate: endDateValue,
+            result: result,
+        };
+
+        addRecordToStorage(record);
+
+        addToTable(record);
+
         console.log(startDateValue, endDateValue, periodOptionValue, result);
     }
 
     dateForm.addEventListener("submit", calculateTime);
-
 }
 
 document.addEventListener("DOMContentLoaded", runDateCalculting);
+
+let datesHistory = JSON.parse(localStorage.getItem("datesHistory")) || []; 
+
+function addRecordToStorage (record) {
+    datesHistory.push(record);
+    datesHistory.length > 10 && datesHistory.shift();
+    localStorage.setItem("datesHistory", JSON.stringify(datesHistory));
+}
+
+function addToTable (record) {
+    let tableBody = document.getElementById("historyTableData");
+    let newRow = document.createElement("tr");
+    tableBody.append(newRow);
+
+    let cell = document.createElement("td");
+    newRow.append(cell);
+    cell.innerText = record.startDate;
+
+    cell = document.createElement("td");
+    newRow.append(cell);
+    cell.innerText = record.endDate;
+    
+    cell = document.createElement("td");
+    newRow.append(cell);
+    cell.innerText = record.result;
+
+
+    tableBody.children.length > 10 && tableBody.firstElementChild.remove();
+}
