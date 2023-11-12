@@ -21,11 +21,22 @@ function applyButtonState (isDark, date) {
     switchButton.textContent = isDark ? "Turn on" : "Turn off";
     
     if (date) {
-        let dateText = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+        let dateText = getFormattedDate(date);
         lastTurningMassage.textContent = `Last turn ${isDark ? "off" : "on"}: ${dateText}`;
     } else {
         lastTurningMassage.textContent = "";
     }
+}
+
+function getFormattedDate (date) {
+    let day = date.getDate();
+    let month = date.getMonth()+1;
+    let year = date.getFullYear();
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    return `${day}-${month}-${year} ${hour}:${minutes}:${seconds}`;
 }
 
 let currentButtonState = getButtonStateFromStorage();
