@@ -45,7 +45,7 @@ let currentDate = currentButtonState ? new Date(currentButtonState.date) : null;
 
 applyButtonState(currentIsDark, currentDate);
 
-switchButton.addEventListener("click", function turnOff() {
+switchButton.addEventListener("click", function () {
     currentIsDark = !currentIsDark;
     let now = new Date();
     
