@@ -92,10 +92,13 @@ const handleInput = async (event) => {
       return;
     }
 
-    const user = await api.getUser(value);
-    const followers = await api.getFollowers(value, 6);
-    const public_repos = await api.getRepoList(value, 5, "pushed")
-    showProfile(user, followers, public_repos);
+    const [user, followers, publicRepos] = await Promise.all([
+        api.getUser(value),
+        api.getFollowers(value, 6), 
+        api.getRepoList(value, 5, "pushed")
+    ]);
+
+    showProfile(user, followers, publicRepos);
   } catch (error) {
     showAlert(error.message, "danger");
   }
