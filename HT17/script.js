@@ -92,8 +92,8 @@ const handleInput = async (event) => {
       return;
     }
 
-    const [user, followers, publicRepos] = await Promise.all([
-        api.getUser(value),
+    const user = await api.getUser(value);
+    const [followers, publicRepos] = await Promise.all([
         api.getFollowers(value, 6), 
         api.getRepoList(value, 5, "pushed")
     ]);
