@@ -1,8 +1,4 @@
 class Elves {
-    isMythologicalCreatures;
-    haveSharpEars;
-    isStrong;
-
     constructor(isMythologicalCreatures, haveSharpEars, isStrong) {
         this.isMythologicalCreatures = isMythologicalCreatures;
         this.haveSharpEars = haveSharpEars;
@@ -21,9 +17,7 @@ class Elves {
 }
 
 class SindarElves extends Elves {
-    isImmortal;
     #isEldarDescendants;
-    isForestElves;
 
     constructor(isMythologicalCreatures, haveSharpEars, isStrong) {
         super(isMythologicalCreatures, haveSharpEars, isStrong);
@@ -44,9 +38,7 @@ class SindarElves extends Elves {
 }
 
 class LightElves extends Elves {
-    isImmortal;
     #isNotGreyElves;
-    isHightElves;
 
     constructor(isMythologicalCreatures, haveSharpEars, isStrong) {
         super(isMythologicalCreatures, haveSharpEars, isStrong);
@@ -67,9 +59,7 @@ class LightElves extends Elves {
 }
 
 class DarkElves extends SindarElves {
-    isImmortal = "yes";
     #isNotGreyElves;
-    isAvari = "yes";
 
     constructor(isMythologicalCreatures, haveSharpEars, isStrong) {
         super(isMythologicalCreatures, haveSharpEars, isStrong);
@@ -90,8 +80,6 @@ class DarkElves extends SindarElves {
 }
 
 class Orcs extends DarkElves {
-    isNotImmortal;
-    isArtificiallyCreated;
     #isAntagonists;
 
     constructor(isMythologicalCreatures, haveSharpEars, isStrong) {
