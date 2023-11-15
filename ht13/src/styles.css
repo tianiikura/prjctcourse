@@ -1,0 +1,8 @@
+body {
+  font-family: sans-serif;
+}
+
+.edit-item,
+.delete-item {
+  padding-left: 10px;
+}
